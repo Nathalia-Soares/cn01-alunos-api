@@ -24,13 +24,13 @@ jobs:
           java-version: '21'
           distribution: 'microsoft'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Build with Gradle
+        run: gradle clean build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: java-app
+          name: alunos-api
           path: '${{ github.workspace }}/target/*.jar'
 
   deploy:
@@ -44,7 +44,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: java-app
+          name: alunos-api
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -60,4 +60,5 @@ jobs:
           app-name: 'alunos-backend'
           slot-name: 'Production'
           package: '*.jar'
+
           
