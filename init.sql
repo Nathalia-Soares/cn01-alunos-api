@@ -6,30 +6,13 @@ alunos_db;
 
 CREATE TABLE IF NOT EXISTS alunos
 (
-    id
-    INT
-    AUTO_INCREMENT
-    PRIMARY
-    KEY,
-    nome
-    VARCHAR
-(
-    100
-) NOT NULL,
-    ra VARCHAR
-(
-    20
-) NOT NULL,
-    curso VARCHAR
-(
-    100
-) NOT NULL,
-    turma VARCHAR
-(
-    50
-) NOT NULL,
-    status_matricula BOOLEAN NOT NULL,
-    );
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    ra VARCHAR(20) NOT NULL,
+    curso VARCHAR(100) NOT NULL,
+    turma VARCHAR(50) NOT NULL,
+    status_matricula BIT NOT NULL
+);
 
 INSERT INTO alunos (nome, ra, curso, turma, status_matricula, idade)
 VALUES ('Maria Silva', 'RA1001', 'Engenharia', 'A1', TRUE),
